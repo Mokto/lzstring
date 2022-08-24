@@ -48,7 +48,7 @@ version = "0.1.0"
 source = "git+https://github.com/spl0i7/lz-str-rs#c47180bbedfc840c31369378459a5aafd352fac1"
 
 [[package]]
-name = "lzstring-rust"
+name = "lzstring_optimized"
 version = "0.1.0"
 dependencies = [
  "lz-str",
