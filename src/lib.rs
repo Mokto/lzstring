@@ -1,14 +1,14 @@
 use pyo3::exceptions;
-use pyo3::prelude::{pyfunction, pymodule, PyErr, PyModule, PyResult, Python};
+use pyo3::prelude::{pyfunction, pymodule, PyModule, PyResult, Python};
 use pyo3::wrap_pyfunction;
 
 #[pyfunction]
-fn compressToBase64(input: String) -> PyResult<String> {
+fn compress_to_base64(input: String) -> PyResult<String> {
     Ok(lz_str::compress_to_base64(input.as_str()))
 }
 
 #[pyfunction]
-fn decompressFromBase64(input: String) -> PyResult<String> {
+fn decompress_from_base64(input: String) -> PyResult<String> {
     let result = lz_str::decompress_from_base64(input.as_str());
     if let None = result {
         return Err(exceptions::PyTypeError::new_err("decompression failed"));
@@ -24,9 +24,9 @@ fn decompressFromBase64(input: String) -> PyResult<String> {
 
 /// A Python module implemented in Rust.
 #[pymodule]
-fn lzma_pyo3(py: Python, m: &PyModule) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(compressToBase64, m)?)?;
-    m.add_function(wrap_pyfunction!(decompressFromBase64, m)?)?;
+fn lzstring_optimized(_: Python, m: &PyModule) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(compress_to_base64, m)?)?;
+    m.add_function(wrap_pyfunction!(decompress_from_base64, m)?)?;
     Ok(())
 }
 
