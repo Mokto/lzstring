@@ -4,12 +4,12 @@ use pyo3::wrap_pyfunction;
 
 #[pyfunction]
 fn compress_to_base64(input: String) -> PyResult<String> {
-    Ok(lz_str::compress_to_base64(input.as_str()))
+    Ok(lz_str::compress_to_encoded_uri_component(input.as_str()))
 }
 
 #[pyfunction]
 fn decompress_from_base64(input: String) -> PyResult<String> {
-    let result = lz_str::decompress_from_base64(input.as_str());
+    let result = lz_str::decompress_from_encoded_uri_component(input.as_str());
     if let None = result {
         return Err(exceptions::PyTypeError::new_err("decompression failed"));
     }
