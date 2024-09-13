@@ -49,7 +49,7 @@ source = "git+https://github.com/spl0i7/lz-str-rs#c47180bbedfc840c31369378459a5a
 
 [[package]]
 name = "lzstring_optimized"
-version = "0.4.0"
+version = "0.7.0"
 dependencies = [
  "lz-str",
  "pyo3",

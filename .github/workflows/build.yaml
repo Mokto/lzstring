@@ -22,7 +22,7 @@ jobs:
           maturin-version: latest
           command: build
           manylinux: auto
-          args: --release --sdist -i 3.8 3.9 3.10 3.11
+          args: --release --sdist -i 3.8 3.9 3.10 3.11 3.12
       - uses: actions/upload-artifact@v1
         with:
           name: linux-wheels
