@@ -23,7 +23,7 @@ jobs:
           command: build
           manylinux: auto
           args: --release --sdist -i 3.8 3.9 3.10 3.11 3.12
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         with:
           name: linux-wheels
           path: target/wheels/
@@ -46,7 +46,7 @@ jobs:
         run: |
           python3 -m pip install maturin
           maturin build --release
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         with:
           name: osx-${{ matrix.python-version }}-wheel
           path: target/wheels
@@ -64,7 +64,7 @@ jobs:
         run: |
           python -m pip install maturin
           maturin build --release
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v4
         with:
           name: windows-wheels
           path: target/wheels
