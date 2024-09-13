@@ -25,7 +25,7 @@ jobs:
           args: --release --sdist -i 3.8 3.9 3.10 3.11 3.12
       - uses: actions/upload-artifact@v4
         with:
-          name: linux-wheels
+          name: linux-wheels-${{ matrix.target }}
           path: target/wheels/
 
   osx-wheels:
@@ -80,7 +80,10 @@ jobs:
         run: ls -R
 
       - run: mkdir wheels
-      - run: mv ./linux-wheels/* wheels
+      - run: mv ./linux-wheels-x86_64/* wheels
+      - run: mv ./linux-wheels-i686/* wheels
+      - run: mv ./linux-wheels-aarch64/* wheels
+      - run: mv ./osx-3.12-wheel/* wheels
       - run: mv ./osx-3.11-wheel/* wheels
       - run: mv ./osx-3.10-wheel/* wheels
       - run: mv ./osx-3.9-wheel/* wheels
